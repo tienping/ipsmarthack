@@ -9,6 +9,7 @@ import SplashScreen from 'containers/SplashScreen';
 
 // Home Screen
 import HomeScreen from 'containers/HomeScreen';
+import HelperScreen from 'containers/HelperScreen';
 
 // Profile Screen
 import UserProfileScreen from 'containers/UserProfileScreen';
@@ -22,6 +23,7 @@ export function registerScreens(store, Provider) {
 
     // Home Screen
     Navigation.registerComponent('hermorn.screen.Home', () => HomeScreen, store, Provider);
+    Navigation.registerComponent('hermorn.screen.Helper', () => HelperScreen, store, Provider);
 
     // Profile Screen
     Navigation.registerComponent('hermorn.screen.Profile', () => UserProfileScreen, store, Provider);
@@ -31,10 +33,10 @@ export const HermoTabConfig = {
     tabs: [
         {
             label: 'Report',
-            title: 'REPORT',
+            // title: 'REPORT',
             screen: 'hermorn.screen.Home',
-            icon: require('hermo/Resources/ic-home.png'),
-            selectedIcon: require('hermo/Resources/ic-home.png'),
+            icon: require('hermo/Resources/ic-alarm.png'),
+            selectedIcon: require('hermo/Resources/ic-alarm.png'),
             navigatorStyle: {
                 navBarHidden: false,
                 navBarBackgroundColor: 'white',
@@ -46,10 +48,10 @@ export const HermoTabConfig = {
         },
         {
             label: 'Helper',
-            title: 'HELPER',
-            screen: 'hermorn.screen.Home',
-            icon: require('hermo/Resources/ic-home.png'),
-            selectedIcon: require('hermo/Resources/ic-home.png'),
+            // title: 'HELPER',
+            screen: 'hermorn.screen.Helper',
+            icon: require('hermo/Resources/ic-helper.png'),
+            selectedIcon: require('hermo/Resources/ic-helper.png'),
             navigatorStyle: {
                 navBarHidden: false,
                 navBarBackgroundColor: 'white',
@@ -61,7 +63,7 @@ export const HermoTabConfig = {
         },
         {
             label: 'Profile',
-            title: 'PROFILE',
+            // title: 'PROFILE',
             screen: 'hermorn.screen.Profile',
             icon: require('hermo/Resources/ic-profile.png'),
             selectedIcon: require('hermo/Resources/ic-profile.png'),
@@ -76,7 +78,6 @@ export const HermoTabConfig = {
         },
     ],
     animationType: 'fade',
-    title: 'HERMO IS GREAT',
     tabsStyle: {
         tabBarButtonColor: 'rgb(158,158,158)',
         tabBarSelectedButtonColor: 'rgb(136,17,68)',

@@ -363,7 +363,7 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
                 });
                 break;
             case 'SignOut':
-                deleteSchema('Auth');
+                // deleteSchema('Auth');
                 globalScope.token = '';
                 globalScope.isAdmin = false;
                 globalScope.debuggerMode = false;

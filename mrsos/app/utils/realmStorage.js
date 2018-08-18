@@ -4,33 +4,15 @@ import { errorLog } from 'utils/errorService';
 // documentation: https://realm.io/docs/javascript/latest/#writes
 
 export function realmSchema() {
-    const AuthSchema = {
-        name: 'Auth',
+    const HeroSetting = {
+        name: 'hero',
         properties: {
-            token: 'string',
-            isAdmin: 'bool',
-            debuggerMode: 'bool',
-        },
-    };
-
-    const RecentSearchSchema = {
-        name: 'RecentSearch',
-        properties: {
-            productName: {
-                type: 'string',
-            },
-        },
-    };
-
-    const RecentlyViewedSchema = {
-        name: 'RecentlyViewed',
-        properties: {
-            product: 'string',
+            beHero: 'bool',
         },
     };
 
     return Realm.open({
-        schema: [AuthSchema, RecentSearchSchema, RecentlyViewedSchema]
+        schema: [HeroSetting],
     });
 }
 

@@ -40,28 +40,18 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.commonData !== this.props.commonData) {
-            readSchema('Auth').then((result) => {
-                if (result && result[0]) {
-                    globalScope.token = result[0].token;
-                    globalScope.isAdmin = result[0].isAdmin;
-                    globalScope.debuggerMode = result[0].debuggerMode;
+        goToLanding(this.props.navigator, this);
 
-                    goToLanding(this.props.navigator, this);
-                } else {
-                    Navigation.startSingleScreenApp({
-                        screen: {
-                            screen: 'hermorn.screen.SignUp',
-                            title: '',
-                            navigatorStyle: {
-                                navBarHidden: true,
-                                tabBarHidden: true,
-                            },
-                        },
-                    });
-                }
-            });
-        }
+        // Navigation.startSingleScreenApp({
+        //     screen: {
+        //         screen: 'hermorn.screen.SignUp',
+        //         title: '',
+        //         navigatorStyle: {
+        //             navBarHidden: true,
+        //             tabBarHidden: true,
+        //         },
+        //     },
+        // });
     }
 
     handleFirstConnectivityChange = (isConnected) => {
