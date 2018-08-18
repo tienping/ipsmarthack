@@ -13,6 +13,7 @@ const addHeaderToAPI = (apiString, headerParams) => {
     const api = create({
         baseURL: apiString,
         headers: {
+            'Authorization': 'Basic YmI2MjZjNmMtNjAzYi00MzVhLTljNzItZWVmY2NhZjFmM2Rj',
             'Content-Type': 'application/json',
             'Accept-Language': 'en',
             'api-version': '1.0.0',
