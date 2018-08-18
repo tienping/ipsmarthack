@@ -9,6 +9,9 @@ import { signUpFailed, signUpSuccess } from './actions';
 import { SIGN_UP_REQUEST } from './constants';
 
 export function* doSignUp(action) {
+
+    // TODO: loginin mock up handling
+
     const { email, password, password_confirmation } = action.payload;
     if (email === '' || password === '' || password_confirmation === '') {
         yield put(signUpFailed('Username and Password cannot be empty !'));

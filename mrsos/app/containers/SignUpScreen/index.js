@@ -19,25 +19,18 @@ import {
 } from 'native-base';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getXdp, getYdp } from 'utils/hermoUtils';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import FBSDK from 'react-native-fbsdk';
 import { goToLanding } from 'hermo/HermornScreens';
 import { HermoText } from 'style/HerComponent';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
-import colorPalette from 'style/colorPalette';
-import { getFbUserProfileData } from 'containers/LoginScreen';
 
 import makeSelectSignUpScreen, { makeSelectSignUpScreenAuth } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import { signUpRequest } from './actions';
-
-const {
-    LoginButton,
-    AccessToken,
-} = FBSDK;
 
 const styles = {
     logoContainer: {
@@ -54,8 +47,8 @@ const styles = {
     },
     formContainer: {
         marginTop: 29,
-        marginLeft: 20,
-        marginRight: 20,
+        marginLeft: getXdp(5),
+        marginRight: getXdp(5),
     },
     image: {
         width: 40,
@@ -154,28 +147,28 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
         if (username === '' || email === '' || password === '' || password_confirmation === '') {
             if (username === '') {
                 this.setState({ usernameErr: true });
-                this.setState({ usernameErrText: 'Please enter username.' });
+                this.setState({ usernameErrText: 'Please enter Full Name.' });
             } else {
                 this.setState({ usernameErr: false });
                 this.setState({ usernameErrText: '' });
             }
             if (email === '') {
                 this.setState({ emailErr: true });
-                this.setState({ emailErrText: 'Please enter email address.' });
+                this.setState({ emailErrText: 'Please enter Full Name.' });
             } else {
                 this.setState({ emailErr: false });
                 this.setState({ emailErrText: '' });
             }
             if (password === '') {
                 this.setState({ passwordErr: true });
-                this.setState({ passwordErrText: 'Please enter password.' });
+                this.setState({ passwordErrText: 'Please enter Phone Number.' });
             } else {
                 this.setState({ passwordErr: false });
                 this.setState({ passwordErrText: '' });
             }
             if (password_confirmation === '') {
                 this.setState({ cpasswordErr: true });
-                this.setState({ cpasswordErrText: 'Please enter confirmation password.' });
+                this.setState({ cpasswordErrText: 'Please enter One Time Password.' });
             } else {
                 this.setState({ cpasswordErr: false });
                 this.setState({ cpasswordErrText: '' });
@@ -251,67 +244,20 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
             <Container style={{ backgroundColor: 'white' }}>
                 <Content>
                     <View style={styles.logoContainer}>
-                        {/* <Icon style={{ position: 'absolute', left: 10 }} name="close" onPress={this.onCloseHandler} /> */}
-                        <Text style={{ fontSize: 14, fontWeight: 'bold' }}>SIGN UP WITH</Text>
-                        {/* <View style={{ flexDirection: 'row', paddingTop: 27, paddingBottom: 31.4 }}>
-                            <Image style={{ height: 48, width: 48, marginLeft: 17, marginRight: 17 }} source={require('../../Resources/fb.png')} />
-                            <Image style={{ height: 48, width: 48, marginLeft: 17, marginRight: 17 }} source={require('../../Resources/gplus.png')} />
-                        </View> */}
-                        <View style={{ flexDirection: 'row', paddingTop: 10, paddingBottom: 20 }}>
-                            <LoginButton
-                                publishPermissions={['publish_actions']}
-                                onLoginFinished={
-                                    (error, result) => {
-                                        if (error) {
-                                            alert('login has error: ' + result.error);
-                                        } else {
-                                            AccessToken.getCurrentAccessToken().then((data) => {
-                                                getFbUserProfileData(data.accessToken, this.props.dispatch);
-                                            });
-                                        }
-                                    }
-                                }
-                            />
+                        <View style={{ flexDirection: 'row', paddingTop: 5}}>
+                            <Image style={{ height: 48, width: 48, paddingTop: getYdp(10), marginLeft: 17, marginRight: 17 }} source={require('../../Resources/mrsos-logo.png')} />
                         </View>
-                        <View style={{ borderBottomColor: '#bdbdbd', borderBottomWidth: 1, width: '90%' }} />
-                        <View style={{ position: 'relative' }}>
-                            <Text
-                                style={styles.image}
-                            >
-                                OR
-                            </Text>
-                        </View>
+                        <HermoText fontType="Body">Mr SOS</HermoText>
+                        <HermoText style={{ color: '#49525d', paddingTop: getYdp(5), paddingBottom: getYdp(1), fontSize: 30 }}>Sign In</HermoText>
                     </View>
                     <View style={styles.formContainer}>
-                        <View style={{ marginBottom: 29 }}>
-                            <Text style={{ textAlign: 'center', fontSize: 14, fontWeight: 'bold' }}>YOUR EMAIL ACCOUNT</Text>
-                        </View>
                         <Form>
-                            <View style={{ borderColor: this.state.usernameErr ? 'red' : null, borderWidth: this.state.usernameErr ? 1 : 0 }}>
-                                <Item error={this.state.usernameErr} style={{ marginLeft: 0 }}>
-                                    <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/user.png')} />
-                                    <Input
-                                        style={{ fontSize: 10, color: 'gray', marginLeft: 5 }}
-                                        placeholder="Username*"
-                                        value={this.state.username}
-                                        onChangeText={(username) => this.onTextChange('username', username)}
-                                    />
-                                </Item>
-                            </View>
-                            {
-                                this.state.usernameErr ?
-                                    <View style={{ backgroundColor: 'red', flexDirection: 'row', paddingLeft: 10 }}>
-                                        <Icon name="information-circle" style={{ color: 'white', fontSize: 16, alignSelf: 'center' }} />
-                                        <HermoText color="WhiteSmoke" style={{ textAlign: 'center', padding: 2 }}>{this.state.usernameErrText}</HermoText>
-                                    </View> : null
-                            }
-
                             <View style={{ borderColor: this.state.emailErr ? 'red' : null, borderWidth: this.state.emailErr ? 1 : 0 }}>
                                 <Item error={this.state.emailErr} style={{ marginLeft: 0 }}>
-                                    <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/email.png')} />
+                                    <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/user.png')} />
                                     <Input
-                                        style={{ fontSize: 10, color: 'gray', marginLeft: 5 }}
-                                        placeholder="Email Address*"
+                                        style={{ fontSize: 15, color: 'gray', marginLeft: 5 }}
+                                        placeholder="Full Name"
                                         value={this.state.email}
                                         onChangeText={(email) => this.onTextChange('email', email)}
                                     />
@@ -327,29 +273,21 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
 
                             <View style={{ borderColor: this.state.passwordErr ? 'red' : null, borderWidth: this.state.passwordErr ? 1 : 0, marginTop: 10 }}>
                                 <Item error={this.state.passwordErr} style={{ marginLeft: 0, display: 'flex', flexDirection: 'row' }}>
-                                    <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/pass.png')} />
+                                    <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/phone.png')} />
                                     <Input
-                                        style={{ fontSize: 10, color: 'gray', marginLeft: 5, flex: 8 }}
-                                        placeholder="Password*"
+                                        style={{ fontSize: 15, color: 'gray', marginLeft: 5, flex: 8 }}
+                                        placeholder="Phone Number"
                                         secureTextEntry={this.state.passwordHide}
                                         value={this.state.password}
                                         onChangeText={(password) => this.onTextChange('password', password)}
                                     />
-                                    <TouchableOpacity onPress={() => this.togglePasswordHideAndShow()}>
-                                        {
-                                            this.state.passwordHide ?
-                                                <Image style={{ width: 18, height: 16 }} source={require('../../Resources/seepass.png')} />
-                                                :
-                                                <Image style={{ width: 18, height: 16 }} source={require('../../Resources/seepass.png')} />
-                                        }
-                                    </TouchableOpacity>
                                 </Item>
                             </View>
                             {
-                                this.state.cpasswordErr ?
+                                this.state.passwordErr ?
                                     <View style={{ backgroundColor: 'red', flexDirection: 'row', paddingLeft: 10 }}>
                                         <Icon name="information-circle" style={{ color: 'white', fontSize: 16, alignSelf: 'center' }} />
-                                        <HermoText color="WhiteSmoke" style={{ textAlign: 'center', padding: 2 }}>{this.state.cpasswordErrText}</HermoText>
+                                        <HermoText color="WhiteSmoke" style={{ textAlign: 'center', padding: 2 }}>{this.state.passwordErrText}</HermoText>
                                     </View> : null
                             }
 
@@ -357,19 +295,14 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
                                 <Item error={this.state.cpasswordErr} style={{ marginLeft: 0, display: 'flex', flexDirection: 'row' }}>
                                     <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/pass.png')} />
                                     <Input
-                                        style={{ fontSize: 10, color: 'gray', marginLeft: 5, flex: 8 }}
-                                        placeholder="Password*"
+                                        style={{ fontSize: 15, color: 'gray', marginLeft: 5, flex: 8 }}
+                                        placeholder="OTP"
                                         secureTextEntry={this.state.cpasswordHide}
                                         value={this.state.cpassword}
                                         onChangeText={(cpassword) => this.onTextChange('cpassword', cpassword)}
                                     />
                                     <TouchableOpacity onPress={() => this.toggleCPasswordHideAndShow()}>
-                                        {
-                                            this.state.passwordHide ?
-                                                <Image style={{ width: 18, height: 16 }} source={require('../../Resources/seepass.png')} />
-                                                :
-                                                <Image style={{ width: 18, height: 16 }} source={require('../../Resources/seepass.png')} />
-                                        }
+                                        <HermoText style={{ borderWidth: 1, borderRadius: 5, marginRight: 10, borderColor: 'rgba(0,0,0,0.2)', padding: 5 }}>Request</HermoText>
                                     </TouchableOpacity>
                                 </Item>
                             </View>
@@ -382,68 +315,6 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
                             }
                         </Form>
                     </View>
-                    {/* <View style={{ backgroundColor: 'lightgray', paddingLeft: 25, paddingTop: 10, paddingBottom: 20 }}>
-                        <Text style={{ fontSize: 12, paddingTop: 10, paddingBottom: 5, color: 'black' }}>Date Of Birth (optional)</Text>
-                        <Row style={{ display: 'flex', flexDirection: 'row' }}>
-                            <Col4>
-                                <Picker
-                                    style={{ backgroundColor: 'white', height: 30 }}
-                                    mode="dropdown"
-                                    selectedValue={this.state.day}
-                                    onValueChange={(itemValue) => this.setState({ day: itemValue })}>
-                                    <Item label="01" value="01" />
-                                    <Item label="02" value="02" />
-                                    <Item label="03" value="03" />
-                                    <Item label="04" value="04" />
-                                </Picker>
-                            </Col4>
-                            <Col4>
-                                <Picker
-                                    style={{ backgroundColor: 'white', height: 30 }}
-                                    mode="dropdown"
-                                    selectedValue={this.state.month}
-                                    onValueChange={(itemValue) => this.setState({ month: itemValue })}>
-                                    <Item label="Jan" value="jan" />
-                                    <Item label="Feb" value="feb" />
-                                    <Item label="March" value="mar" />
-                                    <Item label="April" value="apr" />
-                                </Picker>
-                            </Col4>
-                            <Col4>
-                                <Picker
-                                    style={{ backgroundColor: 'white', height: 30 }}
-                                    mode="dropdown"
-                                    placeholder={this.state.year}
-                                    selectedValue={this.state.year}
-                                    onValueChange={(itemValue) => this.setState({ year: itemValue })}>
-                                    <Item label="1996" value="1996" />
-                                    <Item label="1997" value="1997" />
-                                    <Item label="1998" value="1998" />
-                                    <Item label="1999" value="1999" />
-                                </Picker>
-                            </Col4>
-                        </Row>
-                        <Text style={{ fontSize: 10, color: 'gray', marginTop: 5 }}>Let us know and we'll rock you with some treats!</Text>
-                        <Text style={{ fontSize: 12, paddingTop: 10, color: 'black' }}>Gender (optional)</Text>
-                        <Row>
-                            <Col6 style={{ display: 'flex', flexDirection: 'row', padding: 5 }}>
-                                <Radio selected={true} /><Text style={{ marginLeft: 15, fontSize: 12, alignSelf: 'center' }}>Male</Text>
-                            </Col6>
-                            <Col6 style={{ display: 'flex', flexDirection: 'row', padding: 5 }}>
-                                <Radio selected={false} /><Text style={{ marginLeft: 15, fontSize: 12, alignSelf: 'center' }}>Female</Text>
-                            </Col6>
-                        </Row>
-                    </View> */}
-                    {/* <View style={{ paddingTop: 15, paddingLeft: 20, paddingRight: 20 }}>
-                        <Row>
-                            <Col10>
-                                <Text style={{ color: 'gray', fontSize: 10 }}>I want to receive newsletters and updates froms Hermo by email and post.</Text>
-                            </Col10>
-                            <Col2>
-                                <Switch value={true} />
-                            </Col2>
-                        </Row>
-                    </View> */}
                     {
                         this.state.errInfo ?
                             this.state.errInfo.map((msg, index) => (
@@ -454,17 +325,9 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
                         style={{
                             marginLeft: 20,
                             marginRight: 20,
-                            marginTop: 20,
+                            marginTop: getYdp(3),
                             marginBottom: 29,
-                            backgroundColor: this.state.username &&
-                                                this.state.email &&
-                                                this.state.password &&
-                                                this.state.password_confirmation &&
-                                                !this.state.usernameErr &&
-                                                !this.state.emailErr &&
-                                                !this.state.passwordErr &&
-                                                !this.state.cpasswordErr ?
-                                colorPalette.TyrianPurple : colorPalette.LightSilver,
+                            backgroundColor: '#49525d',
                         }}
                         block={true}
                         onPress={this.onSignUpHandler}
@@ -472,41 +335,24 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
                         {
                             this.props.signupscreen.loading ?
                                 <Spinner color="white" /> :
-                                <Text style={{ textAlign: 'center', alignSelf: 'center', color: 'white', fontSize: 14 }}>JOIN HERMO</Text>
+                                <Text style={{ textAlign: 'center', alignSelf: 'center', padding: 15, color: 'white', fontSize: 20 }}>Join Mr SOS</Text>
                         }
                     </Button>
-                    <Text style={{ textAlign: 'center', alignSelf: 'center', marginLeft: 50, marginRight: 50, color: 'gray', fontSize: 11 }}>
-                        By signing up, you agree to our
-                    </Text>
-                    <Text style={{ textAlign: 'center', alignSelf: 'center', marginLeft: 50, marginRight: 50, color: 'gray', fontSize: 11, textDecorationLine: 'underline' }} onPress={this.privacyOnPressed}>
-                        Privacy Policy & Terms of Service.
-                    </Text>
-                    <View style={{ marginLeft: 20, marginRight: 20 }}>
-                        <View
-                            style={{
-                                borderBottomColor: 'black',
-                                borderBottomWidth: 1,
-                                width: '100%',
-                                marginTop: 34.5,
-                            }}
-                        />
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: getYdp(10) }}>
+                        <Text style={{ textAlign: 'center', alignSelf: 'center', marginRight: 3, color: 'gray', fontSize: 15 }}>
+                            By creating an account, you agree to our
+                        </Text>
+                        <TouchableOpacity onPress={() => {}}>
+                            <Text style={{ color: 'gray', fontSize: 13, textDecorationLine: 'underline' }}>Terms</Text>
+                        </TouchableOpacity>
                     </View>
-                    <View style={{ marginTop: 50.5, marginBottom: 7, alignSelf: 'center' }}>
-                        <Text style={{ alignSelf: 'center', fontSize: 14, fontWeight: 'bold' }}>Already have an account?</Text>
-                    </View>
-                    <View style={{ alignSelf: 'center', marginTop: 10, marginBottom: 40 }}>
-                        <Button
-                            style={{
-                                backgroundColor: 'white',
-                                borderRadius: 2,
-                                borderWidth: 0.5,
-                                borderColor: 'gray',
-                            }}
-                            block={true}
-                            onPress={this.onLoginHandler}
-                        >
-                            <Text style={{ textAlign: 'center', width: 100, color: 'rgb(102, 0, 51)', fontSize: 14, marginTop: 15, marginBottom: 15, marginLeft: 30, marginRight: 30 }}>LOGIN</Text>
-                        </Button>
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', paddingTop: 10, paddingBottom: 10 }}>
+                        <Text style={{ textAlign: 'center', alignSelf: 'center', marginRight: 3, color: 'gray', fontSize: 15 }}>
+                            Login with email?
+                        </Text>
+                        <TouchableOpacity onPress={this.onLoginHandler}>
+                            <Text style={{ color: 'gray', fontSize: 13, textDecorationLine: 'underline' }}>Sign In</Text>
+                        </TouchableOpacity>
                     </View>
                 </Content>
             </Container>

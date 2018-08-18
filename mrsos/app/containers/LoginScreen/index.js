@@ -499,7 +499,6 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                                 paddingTop: 19.5,
                             }}
                         />
-                        <Text style={{ textAlign: 'center', fontSize: 14, fontWeight: 'bold', marginTop: 30.5 }}>Don't have an account?</Text>
                         <View style={{ alignSelf: 'center', marginTop: 10, marginBottom: 40 }}>
                             <Button
                                 style={{
@@ -510,7 +509,7 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                                 block={true}
                                 onPress={this.onSignUpHandler}
                             >
-                                <Text style={{ textAlign: 'center', width: 100, color: 'rgb(102, 0, 51)', fontSize: 14, marginTop: 15, marginBottom: 15, marginLeft: 30, marginRight: 30 }}>SIGN UP</Text>
+                                <Text style={{ textAlign: 'center', width: 100, color: 'rgb(102, 0, 51)', fontSize: 14, marginTop: 15, marginBottom: 15, marginLeft: 30, marginRight: 30 }}>Login with Phone Number</Text>
                             </Button>
                         </View>
                     </View>
