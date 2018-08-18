@@ -1,0 +1,7 @@
+platform :ios, '9.0'
+target ‘herapp’ do
+  pod 'Firebase/Core'
+  pod 'Firebase/RemoteConfig'
+  pod 'RKDropdownAlert'
+  pod 'ZDCChat'
+end

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Hermo 2.0</string>
+
+    <string name="facebook_app_id">1392058637684776</string>
+    <string name="fb_login_protocol_scheme">fb1392058637684776</string>
+    <string name="bugsnag_id">d37792ed3f8c68b62dd998e9f1e247bc</string>
+    <string name="branch_id">347971542002454560</string>
+    <string name="branch_test_id">347971542031814689</string>
+    <string name="branch_live_key">key_live_aeql7rzmaW4IzluUhxSznfjcuAdekLnj</string>
+    <string name="branch_test_key">key_test_hiyi3rEpgYZGxouGlFNV9phoEyngdOpE</string>
+</resources>
