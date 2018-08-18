@@ -8,6 +8,7 @@ export function* callOneSignal() {
         'included_segments': ['All'],
         'data': { 'foo': 'bar' },
         'contents': { 'en': 'Help ME !!' },
+        'android_sound': 'alarm',
     });
     const response = yield call(apiRequest, null, 'post', body, 'https://onesignal.com/api/v1/notifications');
 
