@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { View, NetInfo } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
-import branch from 'react-native-branch';
 import { Navigation } from 'react-native-navigation';
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -19,8 +18,6 @@ import { readSchema } from 'utils/realmStorage';
 import { goToLanding } from 'hermo/HermornScreens';
 import { globalScope } from 'hermo/globalScope';
 import { ImageHolder } from 'components/ImageLink/index';
-import { appLinkGenerator } from 'utils/hermoUtils';
-import { handleAppLink } from 'utils/appLinkHandler';
 
 import makeSelectSplashScreen, { makeSelectCommonData, makeSelectCommonLoading } from './selectors';
 import reducer from './reducer';
@@ -31,17 +28,6 @@ import { fetchGetCommonData } from './actions';
 export class SplashScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
     componentDidMount() {
         this.props.dispatch(fetchGetCommonData());
-
-        branch.subscribe(({ error, params }) => {
-            if (error) {
-                return;
-            }
-            const page = params.$page;
-            const href = params.$href;
-            const itemId = params.$item_id;
-
-            handleAppLink(appLinkGenerator('new-page', page, href, itemId), this.props.navigator);
-        });
 
         NetInfo.isConnected.fetch().then((isConnected) => {
             globalScope.isConnected = isConnected;
@@ -86,7 +72,6 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
         return (
             <View style={{ backgroundColor: colorPalette.TyrianPurple }} >
                 {/* <ImageHolder imageStyle={{ alignItems: 'center', justifyContent: 'center' }} imageSource="https://cdn3.hermo.my/hermo/imagelink/2016/nyx-footer-banner_11496890086.png" /> */}
-
             </View>
         );
     }

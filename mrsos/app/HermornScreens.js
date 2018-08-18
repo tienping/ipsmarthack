@@ -30,8 +30,23 @@ export function registerScreens(store, Provider) {
 export const HermoTabConfig = {
     tabs: [
         {
-            label: 'Store',
-            title: 'STORE',
+            label: 'Report',
+            title: 'REPORT',
+            screen: 'hermorn.screen.Home',
+            icon: require('hermo/Resources/ic-home.png'),
+            selectedIcon: require('hermo/Resources/ic-home.png'),
+            navigatorStyle: {
+                navBarHidden: false,
+                navBarBackgroundColor: 'white',
+                navBarTextColor: hermoStyle.Color,
+                navBarButtonColor: hermoStyle.Color,
+                navBarNoBorder: false,
+            },
+            passProps: {},
+        },
+        {
+            label: 'Helper',
+            title: 'HELPER',
             screen: 'hermorn.screen.Home',
             icon: require('hermo/Resources/ic-home.png'),
             selectedIcon: require('hermo/Resources/ic-home.png'),

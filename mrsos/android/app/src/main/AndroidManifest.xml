@@ -24,7 +24,7 @@
       android:allowBackup="true"
       android:largeHeap="true"
       android:label="@string/app_name"
-      android:icon="@mipmap/hermo_launcher"
+      android:icon="@mipmap/mrsos_launcher"
       android:theme="@style/AppTheme">
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <meta-data android:name="com.bugsnag.android.API_KEY" android:value="@string/bugsnag_id"/>

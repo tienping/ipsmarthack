@@ -90,24 +90,16 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
 
         return (
             <View style={{ backgroundColor: 'white' }} >
-                <TouchableOpacity activeOpacity={0.8} onPress={() => this.screenOnPressed('Member', 'MEMBER INFO')}>
-                    <View style={{ backgroundColor: colorPalette.TyrianPurple, height: 52 }}>
-                        <HermoText style={{ color: colorPalette.White, paddingTop: 21, paddingLeft: 20 }}>
-                            Welcome Back
-                        </HermoText>
-                    </View>
-                    {/* <ImageHolder imageStyle={{ height: 80, width: getFullScreenWidth() }} imageSource="https://cdn5.hermo.my/images/banners/mufe-buy-2-get-rm44-cash-rebate_1150x450_1522759277.jpg" /> */}
-                </TouchableOpacity>
+                <View style={{ backgroundColor: colorPalette.TyrianPurple, height: 52 }}>
+                    <HermoText style={{ color: colorPalette.White, paddingTop: 21, paddingLeft: 20 }}>
+                        Welcome Back
+                    </HermoText>
+                </View>
 
                 <View style={styles.userInfoContainer} >
                     <ImageHolder imageStyle={{ marginTop: -25, marginBottom: 10, borderRadius: 25, height: 50, width: 50, alignSelf: 'center' }} imageSource={dataChecking(profile, 'avatar') ? profile.avatar : 'https://www.hermo.sg/images/fb/hermo-logo.png'} />
                     <View style={styles.relative}>
                         <HermoText fontType="BodyTitle" color="black" style={{ textAlign: 'center', fontSize: 17 }}>{dataChecking(profile, 'name')}</HermoText>
-                        <View style={{ position: 'absolute', right: 10 }} >
-                            <TouchableOpacity activeOpacity={0.8} onPress={() => this.screenOnPressed('UpdateUserProfile', 'EDIT')}>
-                                <Icon name="md-create" style={styles.iconEditProfile} />
-                            </TouchableOpacity>
-                        </View>
                     </View>
 
                     <HermoText
@@ -122,98 +114,6 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
                         {dataChecking(profile, 'email')}
                     </HermoText>
                 </View>
-
-
-                <View style={[styles.row, { alignSelf: 'center' }]}>
-                    <TouchableOpacity activeOpacity={0.8} onPress={() => this.screenOnPressed('Credits', 'CREDITS')}>
-                        <View style={styles.walletContainer}>
-                            <HermoText
-                                style={{
-                                    height: 20,
-                                    textAlign: 'center',
-                                    fontSize: 17,
-                                }}
-                                color="black"
-                                fontType="bodyTitle"
-                            >
-                                {dataChecking(profile, 'credit', 'total')}
-                            </HermoText>
-                            <HermoText
-                                style={{
-                                    textAlign: 'center',
-                                    height: 20,
-                                    fontSize: 11,
-                                    paddingTop: 5,
-                                }}
-                                color="black"
-                                fontType="label"
-                            >
-                                CREDITS <Icon name="ios-arrow-forward" style={styles.iconForward} />
-                            </HermoText>
-                        </View>
-                    </TouchableOpacity>
-
-                    {divider}
-
-                    <TouchableOpacity activeOpacity={0.8} onPress={() => this.screenOnPressed('Balance', 'BALANCE')}>
-                        <View style={styles.walletContainer}>
-                            <HermoText
-                                style={{
-                                    height: 20,
-                                    textAlign: 'center',
-                                    fontSize: 17,
-                                }}
-                                color="black"
-                                fontType="bodyTitle"
-                            >
-                                {dataChecking(profile, 'balance', 'total')}
-                            </HermoText>
-                            <HermoText
-                                style={{
-                                    height: 20,
-                                    textAlign: 'center',
-                                    fontSize: 11,
-                                    paddingTop: 5,
-                                }}
-                                color="black"
-                                fontType="label"
-                            >
-                                BALANCE <Icon name="ios-arrow-forward" style={styles.iconForward} />
-                            </HermoText>
-                        </View>
-                    </TouchableOpacity>
-
-                    {divider}
-
-                    <TouchableOpacity activeOpacity={0.8} onPress={() => this.screenOnPressed('Vouchers', 'VOUCHERS')}>
-                        <View style={styles.walletContainer}>
-                            <HermoText
-                                style={{
-                                    height: 20,
-                                    textAlign: 'center',
-                                    fontSize: 17,
-                                }}
-                                color="black"
-                                fontType="bodyTitle"
-                            >
-                                {dataChecking(profile, 'voucher', 'usable')}
-                            </HermoText>
-                            <HermoText
-                                style={{
-                                    height: 20,
-                                    textAlign: 'center',
-                                    fontSize: 11,
-                                    paddingTop: 5,
-                                }}
-                                color="black"
-                                fontType="label"
-                            >
-                                VOUCHERS <Icon name="ios-arrow-forward" style={styles.iconForward} />
-                            </HermoText>
-                        </View>
-                    </TouchableOpacity>
-
-                </View>
             </View>
         );
     };
@@ -224,27 +124,7 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
         return (
             <View style={{ marginTop: 5, padding: 20, backgroundColor: colorPalette.White }}>
                 <View style={styles.row}>
-
-                    <HermoText
-                        style={{
-                            height: 20,
-                            fontSize: 14,
-                        }}
-                        color="black"
-                        fontType="BodyTitle"
-                    >
-                        Skin Tone
-                    </HermoText>
-                    <View style={{ position: 'absolute', right: 0 }} >
-                        <TouchableOpacity activeOpacity={0.8} onPress={() => this.screenOnPressed('UserSkinProfile', 'EDIT')}>
-                            <Icon name="md-create" style={styles.iconEditProfile} />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.row}>
-
                     <ImageHolder imageStyle={{ margin: 10, borderRadius: 20, height: 40, width: 40 }} imageSource="https://www.hermo.sg/images/fb/hermo-logo.png" />
-
                     <HermoText
                         style={{
                             marginLeft: 5,
@@ -445,80 +325,6 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
                         :
                         null
                 }
-                {
-                    globalScope.isAdmin ?
-                        <View style={{ padding: 15, ...styles.rowDivider }}>
-                            <HermoText fontType="Title" color="Black">Developer Options:</HermoText>
-                            <HermoText fontType="Label" color="Black">{`env: ${CHECK_DOTENV}`}</HermoText>
-                            <HermoText fontType="Label" color="Black">{`API: ${globalScope.api}`}</HermoText>
-                            <View style={[styles.row, { padding: 10 }]}>
-                                <View style={{ flex: 5 }}>
-                                    <HermoText fontType="BodyTitle" color="Black">Debugger Mode:</HermoText>
-                                </View>
-                                <View style={{ flex: 1 }}>
-                                    <Switch
-                                        value={this.state.debuggerMode}
-                                        onValueChange={(newValue) => {
-                                            this.setState({ debuggerMode: newValue });
-                                            globalScope.debuggerMode = newValue;
-                                            this.props.dispatch(updateRealm({
-                                                realmKey: 'Auth',
-                                                schemaObj: {
-                                                    token: globalScope.token,
-                                                    isAdmin: globalScope.isAdmin,
-                                                    debuggerMode: newValue,
-                                                },
-                                            }));
-                                        }}
-                                    />
-                                </View>
-                            </View>
-                            <View style={[styles.row, { padding: 10 }]}>
-
-                                <View style={{ flex: 1 }}>
-                                    <Button
-                                        style={{
-                                            backgroundColor: '#F2F2F2',
-                                        }}
-                                        onPress={() => {
-                                            if (this.state.viewId && !Number.isNaN(this.state.viewId)) {
-                                                this.props.navigator.push({
-                                                    screen: 'hermorn.screen.CampaignViewer',
-                                                    animated: true,
-                                                    backButtonTitle: '',
-                                                    passProps: {
-                                                        data: {
-                                                            id: this.state.viewId,
-                                                        },
-                                                    },
-                                                });
-                                            }
-                                        }}
-                                    >
-                                        <HermoText
-                                            style={{
-                                                padding: 10,
-                                                color: 'gray',
-                                            }}
-                                            color="gray"
-                                            fontType="body"
-                                        >
-                                            Go
-                                        </HermoText>
-                                    </Button>
-                                </View>
-                                <View style={{ flex: 3 }}>
-                                    <Input
-                                        style={{ marginRight: 10, fontSize: 10, color: colorPalette.Grey }}
-                                        value={this.state.viewId}
-                                        onChangeText={(newValue) => this.setState({ viewId: newValue })}
-                                    />
-                                </View>
-                            </View>
-                        </View>
-                        :
-                        null
-                }
             </ScrollView>
         );
     };
@@ -539,79 +345,7 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
     }
 
     screenOnPressed = (page, title) => {
-        const {
-            profile,
-            commonData,
-        } = this.props;
-
         switch (page) {
-            case 'Member': // hermorn.screen.Member
-            case 'UpdateUserProfile': // hermorn.screen.UpdateUserProfile
-            case 'OrderList': // hermorn.screen.OrderList
-            case 'ResetPassword': // hermorn.screen.ResetPassword
-            case 'AddressBook': // hermorn.screen.AddressBook
-                this.props.navigator.push({
-                    screen: `hermorn.screen.${page}`,
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    navigatorStyle: { tabBarHidden: true },
-                    passProps: {
-                        userProfile: profile,
-                        refreshFunction: this.refreshFunction,
-                        commonConfig: dataChecking(commonData, 'config'),
-                    },
-                });
-                break;
-            case 'Feedback': // hermorn.screen.Feedback
-                this.props.navigator.showModal({
-                    screen: `hermorn.screen.${page}`,
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    navigatorStyle: { tabBarHidden: true },
-                    passProps: {
-                        userProfile: profile,
-                    },
-                });
-                break;
-            case 'FAQ': // hermorn.screen.FAQ
-            case 'AboutHermo': // hermorn.screen.AboutHermo
-            case 'ContactUs': // hermorn.screen.ContactUs
-                this.props.navigator.showModal({
-                    screen: `hermorn.screen.${page}`,
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    navigatorStyle: { tabBarHidden: true },
-                    passProps: {
-                        commonConfig: dataChecking(commonData, 'config'),
-                        userProfile: profile,
-                    },
-                });
-                break;
-            case 'JoinUs': // hermorn.screen.JoinUs
-            case 'PrivacyPolicy': // hermorn.screen.PrivacyPolicy
-                this.props.navigator.showModal({
-                    screen: `hermorn.screen.${page}`,
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    navigatorStyle: { tabBarHidden: true },
-                });
-                break;
-            case 'WishList':
-                this.props.navigator.push({
-                    screen: 'hermorn.screen.WishList',
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    navigatorStyle: { tabBarHidden: true },
-                    passProps: {
-                        dispatch: this.props.dispatch,
-                    },
-                });
-                break;
             case 'Login':
             case 'SignUp':
                 this.props.navigator.showModal({
@@ -625,46 +359,6 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
                                 this.props.dispatch(fetchUserProfile());
                             }
                         },
-                    },
-                });
-                break;
-            case 'Credits':
-            case 'Balance':
-            case 'Vouchers':
-                this.props.navigator.push({
-                    screen: 'hermorn.screen.Wallet',
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    passProps: {
-                        data: page,
-                        userProfile: profile,
-                    },
-                });
-                break;
-            case 'UserSkinProfile':
-                this.props.navigator.push({
-                    screen: 'hermorn.screen.UserSkinProfile',
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    passProps: {
-                        userProfile: profile,
-                        skinToneList: dataChecking(commonData, 'skin_tone', 'items'),
-                        skinTypeList: dataChecking(commonData, 'skin_type', 'items'),
-                        skinConcernList: dataChecking(commonData, 'skin_concern', 'items'),
-                        refreshFunction: this.refreshFunction,
-                    },
-                });
-                break;
-            case 'AboutPayment':
-                this.props.navigator.showModal({
-                    screen: 'hermorn.screen.AboutPayment',
-                    animated: true,
-                    backButtonTitle: '',
-                    title: title || page,
-                    passProps: {
-                        commonConfig: dataChecking(commonData),
                     },
                 });
                 break;
