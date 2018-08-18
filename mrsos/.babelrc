@@ -1,0 +1,16 @@
+{
+  "presets": ["react-native", "react-native-dotenv"],
+  "plugins": [
+    [
+        "module-resolver", {
+            "alias": {
+                "hermo": "./app",
+                "containers": "./app/containers",
+                "components": "./app/components",
+                "style": "./app/style",
+                "utils": "./app/utils"
+            }
+        }
+    ]
+  ]
+}

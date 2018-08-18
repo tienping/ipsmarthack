@@ -1,0 +1,30 @@
+/*
+ *
+ * HomeScreen constants
+ *
+ */
+
+export const DEFAULT_ACTION = 'app/HomeScreen/DEFAULT_ACTION';
+export const FETCH_STORE = 'app/HomeScreen/FETCH_STORE';
+export const FETCH_STORE_SUCCESS = 'app/HomeScreen/FETCH_STORE_SUCCESS';
+export const FETCH_STORE_FAILED = 'app/HomeScreen/FETCH_STORE_FAILED';
+
+export const FETCH_TWOH_SUCCESS = 'app/Twoh/FETCH_TWOH_SUCCESS';
+export const FETCH_TWOH_FAILED = 'app/Twoh/FETCH_TWOH_FAILED';
+
+export const ATTENDANCE_REQUEST = 'app/HomeScreen/ATTENDANCE_REQUEST';
+export const ATTENDANCE_SUCCESS = 'app/HomeScreen/ATTENDANCE_SUCCESS';
+export const ATTENDANCE_FAILED = 'app/HomeScreen/ATTENDANCE_FAILED';
+
+export const FETCH_RECOMMENDED_PRODUCT = 'app/HomeScreen/FETCH_RECOMMENDED_PRODUCT';
+export const FETCH_RECOMMENDED_PRODUCT_SUCCESS = 'app/HomeScreen/FETCH_RECOMMENDED_PRODUCT_SUCCESS';
+export const FETCH_RECOMMENDED_PRODUCT_FAILED = 'app/HomeScreen/FETCH_RECOMMENDED_PRODUCT_FAILED';
+
+// Recently Viewed Constant
+export const FETCH_RECENTLY_VIEWED = 'app/HomeScreen/FETCH_RECENTLY_VIEWED';
+export const FETCH_RECENTLY_VIEWED_SUCCESS = 'app/HomeScreen/FETCH_RECENTLY_VIEWED_SUCCESS';
+export const FETCH_RECENTLY_VIEWED_FAILED = 'app/HomeScreen/FETCH_RECENTLY_VIEWED_FAILED';
+export const CLEAR_RECENTLY_VIEWED = 'app/HomeScreen/CLEAR_RECENTLY_VIEWED';
+export const CLEAR_RECENTLY_VIEWED_SUCCESS = 'app/HomeScreen/CLEAR_RECENTLY_VIEWED_SUCCESS';
+export const CLEAR_RECENTLY_VIEWED_FAILED = 'app/HomeScreen/CLEAR_RECENTLY_VIEWED_FAILED';
+
