@@ -142,46 +142,7 @@ export class SignUpScreen extends React.PureComponent { // eslint-disable-line r
     };
 
     onSignUpHandler = () => {
-        const { username, email, password, password_confirmation } = this.state;
-        const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-        if (username === '' || email === '' || password === '' || password_confirmation === '') {
-            if (username === '') {
-                this.setState({ usernameErr: true });
-                this.setState({ usernameErrText: 'Please enter Full Name.' });
-            } else {
-                this.setState({ usernameErr: false });
-                this.setState({ usernameErrText: '' });
-            }
-            if (email === '') {
-                this.setState({ emailErr: true });
-                this.setState({ emailErrText: 'Please enter Full Name.' });
-            } else {
-                this.setState({ emailErr: false });
-                this.setState({ emailErrText: '' });
-            }
-            if (password === '') {
-                this.setState({ passwordErr: true });
-                this.setState({ passwordErrText: 'Please enter Phone Number.' });
-            } else {
-                this.setState({ passwordErr: false });
-                this.setState({ passwordErrText: '' });
-            }
-            if (password_confirmation === '') {
-                this.setState({ cpasswordErr: true });
-                this.setState({ cpasswordErrText: 'Please enter One Time Password.' });
-            } else {
-                this.setState({ cpasswordErr: false });
-                this.setState({ cpasswordErrText: '' });
-            }
-        } else if (!reg.test(email)) {
-            this.setState({ emailErr: true });
-            this.setState({ emailErrText: 'Please enter valid email address.' });
-        } else if (password_confirmation !== password) {
-            this.setState({ cpasswordErr: true });
-            this.setState({ cpasswordErrText: 'Password Not Match' });
-        } else {
-            this.props.dispatch(signUpRequest(email, password, password_confirmation));
-        }
+        goToLanding(this.props.navigator, this);
     };
 
     onCloseHandler = () => {

@@ -295,7 +295,7 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                 <Item style={{ marginLeft: 0 }}>
                     <Icon name="mail" />
                     <Input
-                        style={{ fontSize: 10, color: 'gray' }}
+                        style={{ fontSize: 15, color: 'gray' }}
                         placeholder="Email Address*"
                         value={this.state.email}
                         onChangeText={(email) => this.setState({ email })}
@@ -445,7 +445,7 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                                 <Item error={this.state.pwsError} style={{ marginLeft: 0, display: 'flex', flexDirection: 'row' }}>
                                     <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/pass.png')} />
                                     <Input
-                                        style={{ fontSize: 10, color: 'gray', marginLeft: 5, flex: 8 }}
+                                        style={{ fontSize: 15, color: 'gray', marginLeft: 5, flex: 8 }}
                                         placeholder="Password*"
                                         secureTextEntry={this.state.passwordHide}
                                         value={this.state.password}
