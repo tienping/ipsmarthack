@@ -295,7 +295,7 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                 <Item style={{ marginLeft: 0 }}>
                     <Icon name="mail" />
                     <Input
-                        style={{ fontSize: 10, color: 'gray' }}
+                        style={{ fontSize: 15, color: 'gray' }}
                         placeholder="Email Address*"
                         value={this.state.email}
                         onChangeText={(email) => this.setState({ email })}
@@ -445,7 +445,7 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                                 <Item error={this.state.pwsError} style={{ marginLeft: 0, display: 'flex', flexDirection: 'row' }}>
                                     <Image style={{ marginLeft: 10, width: 16, height: 16 }} source={require('../../Resources/pass.png')} />
                                     <Input
-                                        style={{ fontSize: 10, color: 'gray', marginLeft: 5, flex: 8 }}
+                                        style={{ fontSize: 15, color: 'gray', marginLeft: 5, flex: 8 }}
                                         placeholder="Password*"
                                         secureTextEntry={this.state.passwordHide}
                                         value={this.state.password}
@@ -499,7 +499,6 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                                 paddingTop: 19.5,
                             }}
                         />
-                        <Text style={{ textAlign: 'center', fontSize: 14, fontWeight: 'bold', marginTop: 30.5 }}>Don't have an account?</Text>
                         <View style={{ alignSelf: 'center', marginTop: 10, marginBottom: 40 }}>
                             <Button
                                 style={{
@@ -510,7 +509,7 @@ export class LoginScreen extends React.PureComponent { // eslint-disable-line re
                                 block={true}
                                 onPress={this.onSignUpHandler}
                             >
-                                <Text style={{ textAlign: 'center', width: 100, color: 'rgb(102, 0, 51)', fontSize: 14, marginTop: 15, marginBottom: 15, marginLeft: 30, marginRight: 30 }}>SIGN UP</Text>
+                                <Text style={{ textAlign: 'center', width: 100, color: 'rgb(102, 0, 51)', fontSize: 14, marginTop: 15, marginBottom: 15, marginLeft: 30, marginRight: 30 }}>Login with Phone Number</Text>
                             </Button>
                         </View>
                     </View>

@@ -372,8 +372,8 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
                 FBSDK.LoginManager.logOut();
 
                 this.props.navigator.showModal({
-                    screen: 'hermorn.screen.Login',
-                    title: 'LOGIN',
+                    screen: 'hermorn.screen.SignUp',
+                    title: 'Sign In',
                     animationType: 'slide-up',
                     passProps: {
                         onCloseModal: () => {

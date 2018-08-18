@@ -18,6 +18,7 @@ const colorPalette = {
     LightGrey: '#9e9e9e',
     LightWhite: '#f2f2f2',
     LightSlateGrey: '#e0dde2',
+    theme: '#49525d',
 };
 
 export default colorPalette;

@@ -60,8 +60,8 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
                 } else {
                     Navigation.startSingleScreenApp({
                         screen: {
-                            screen: 'hermorn.screen.Welcome',
-                            title: 'WELCOME',
+                            screen: 'hermorn.screen.SignUp',
+                            title: '',
                             navigatorStyle: {
                                 navBarHidden: true,
                                 tabBarHidden: true,
