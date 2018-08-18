@@ -4,6 +4,7 @@ import com.taskrabbit.zendesk.*;
 import com.zopim.android.sdk.api.ZopimChat;
 import android.app.Application;
 import com.facebook.react.ReactApplication;
+import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import fr.snapp.imagebase64.RNImgToBase64Package;
 import com.azendoo.reactnativesnackbar.SnackbarPackage;
 import com.ipay88.IPay88Package;
@@ -75,7 +76,8 @@ public class MainApplication extends NavigationApplication {
             new ReactNativePushNotificationPackage(),
             new FabricPackage(),
             new MOLPayReactPackage(),
-            new MoEReactPackage()
+            new MoEReactPackage(),
+            new ReactNativeOneSignalPackage()
         );
     }
 

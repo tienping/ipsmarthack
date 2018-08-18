@@ -165,6 +165,7 @@ repositories {
 }
 
 dependencies {
+    implementation project(':react-native-onesignal')
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(':react-native-zendesk-chat')
     implementation project(':react-native-moengage')
@@ -204,3 +205,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
