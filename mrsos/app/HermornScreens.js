@@ -5,6 +5,7 @@ import WelcomeScreen from 'components/WelcomeScreen';
 import LoginScreen from 'containers/LoginScreen';
 import SignUpScreen from 'containers/SignUpScreen';
 import SplashScreen from 'containers/SplashScreen';
+import SosScreen from 'containers/SosScreen';
 // import GetPermissionModal from 'containers/GetPermissionModal';
 
 // Home Screen
@@ -24,6 +25,7 @@ export function registerScreens(store, Provider) {
     // Home Screen
     Navigation.registerComponent('hermorn.screen.Home', () => HomeScreen, store, Provider);
     Navigation.registerComponent('hermorn.screen.Helper', () => HelperScreen, store, Provider);
+    Navigation.registerComponent('hermorn.screen.SosScreen', () => SosScreen, store, Provider);
 
     // Profile Screen
     Navigation.registerComponent('hermorn.screen.Profile', () => UserProfileScreen, store, Provider);
@@ -31,6 +33,21 @@ export function registerScreens(store, Provider) {
 
 export const HermoTabConfig = {
     tabs: [
+        {
+            label: 'SOS',
+            title: 'SOS',
+            screen: 'hermorn.screen.SosScreen',
+            icon: require('hermo/Resources/ic-home.png'),
+            selectedIcon: require('hermo/Resources/ic-home.png'),
+            navigatorStyle: {
+                navBarHidden: false,
+                navBarBackgroundColor: 'white',
+                navBarTextColor: hermoStyle.Color,
+                navBarButtonColor: hermoStyle.Color,
+                navBarNoBorder: false,
+            },
+            passProps: {},
+        },
         {
             label: 'Report',
             // title: 'REPORT',

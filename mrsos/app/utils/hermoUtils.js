@@ -20,6 +20,7 @@ const addHeaderToAPI = (apiString, headerParams) => {
             'app-os-name': Platform.OS,
             'hertoken': globalScope.token,
             // 'app-os-version': DeviceInfo.getSystemVersion(),
+            'Authorization': 'Basic YmI2MjZjNmMtNjAzYi00MzVhLTljNzItZWVmY2NhZjFmM2Rj',
         },
         timeout: 30000,
     });
