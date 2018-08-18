@@ -7,14 +7,14 @@ export function* callOneSignal() {
         'app_id': '5391a370-3b55-4668-95ed-e44b42cc4bc2',
         'included_segments': ['All'],
         'data': { 'foo': 'bar' },
-        'contents': { 'en': 'English Message' },
+        'contents': { 'en': 'Help ME !!' },
     });
     const response = yield call(apiRequest, null, 'post', body, 'https://onesignal.com/api/v1/notifications');
 
     if (response && response.ok) {
-        alert(`success: ${JSON.stringify(response)}`);
+        alert('success');
     } else {
-        alert(`failed: ${JSON.stringify(response)}`);
+        alert('failed');
     }
 }
 // Individual exports for testing
