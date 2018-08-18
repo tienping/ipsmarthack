@@ -19,7 +19,7 @@ import { goToLanding } from 'hermo/HermornScreens';
 import { globalScope } from 'hermo/globalScope';
 import { ImageHolder } from 'components/ImageLink/index';
 
-import OneSignal from 'react-native-onesignal';
+// import OneSignal from 'react-native-onesignal';
 import makeSelectSplashScreen, { makeSelectCommonData, makeSelectCommonLoading } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
@@ -28,11 +28,11 @@ import { fetchGetCommonData } from './actions';
 
 export class SplashScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
     componentWillMount() {
-        OneSignal.init('5391a370-3b55-4668-95ed-e44b42cc4bc2');
+        // OneSignal.init('5391a370-3b55-4668-95ed-e44b42cc4bc2');
 
-        OneSignal.addEventListener('received', this.onReceived);
-        OneSignal.addEventListener('opened', this.onOpened);
-        OneSignal.addEventListener('ids', this.onIds);
+        // OneSignal.addEventListener('received', this.onReceived);
+        // OneSignal.addEventListener('opened', this.onOpened);
+        // OneSignal.addEventListener('ids', this.onIds);
     }
 
     componentDidMount() {
@@ -64,9 +64,9 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
     }
 
     componentWillUnmount() {
-        OneSignal.removeEventListener('received', this.onReceived);
-        OneSignal.removeEventListener('opened', this.onOpened);
-        OneSignal.removeEventListener('ids', this.onIds);
+        // OneSignal.removeEventListener('received', this.onReceived);
+        // OneSignal.removeEventListener('opened', this.onOpened);
+        // OneSignal.removeEventListener('ids', this.onIds);
     }
 
     onReceived(notification) {

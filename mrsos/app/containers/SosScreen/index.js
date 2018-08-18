@@ -5,14 +5,16 @@
  */
 
 import React from 'react';
-import { Container, Content, Text, Button } from 'native-base';
+import { Container, Content, Text, Button, View } from 'native-base';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { getXdp, getYdp } from 'utils/hermoUtils';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
+import { SlideButton } from '../../asset/SlideButton.js';
 import { pushOneSignal } from './actions';
 import makeSelectSosScreen from './selectors';
 import reducer from './reducer';
@@ -27,9 +29,17 @@ export class SosScreen extends React.PureComponent { // eslint-disable-line reac
         return (
             <Container>
                 <Content>
-                    <Button block={true} onPress={() => this.callOneSignalAPI()}>
-                        <Text>SOS</Text>
-                    </Button>
+                    <View style={{height: 50, width: 500}}>
+                        <SlideButton
+                            onSlideSuccess={() => {
+                                this.callOneSignalAPI();
+                            }}
+                        >
+                            <View style={{ margin: getXdp(5), borderRadius: 10, marginTop: getYdp(35), height: 70, width: getXdp(90), padding: getXdp(5), backgroundColor: 'red' }}>
+                                <Text style={{ color: 'white', fontSize: 24, textAlign: 'center' }}>Swipe to SOS</Text>
+                            </View>
+                        </SlideButton>
+                    </View>
                 </Content>
             </Container>
         );

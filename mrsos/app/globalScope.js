@@ -9,4 +9,6 @@ export const globalScope = {
     api: API_URL,
     defaultAPI: 'https://api.hermo.my',
     isConnected: true,
+
+    beHero: false,
 };
