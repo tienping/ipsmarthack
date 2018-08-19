@@ -29,7 +29,7 @@ import { fetchGetCommonData } from './actions';
 
 export class SplashScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
     componentWillMount() {
-        OneSignal.init('5391a370-3b55-4668-95ed-e44b42cc4bc2');
+        // OneSignal.init('5391a370-3b55-4668-95ed-e44b42cc4bc2');
 
         readSchema('hero').then((result) => {
             if (result && result[0]) {

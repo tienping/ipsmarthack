@@ -14,18 +14,16 @@ import { compose } from 'redux';
 import ImagePicker from 'react-native-image-picker';
 
 export class MapView extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-
-
     openCamera = () => {
         const options = {
             title: 'Shooting Photo',
             storageOptions: {
-              skipBackup: true,
-              path: 'images',
-            }
-          };
+                skipBackup: true,
+                path: 'images',
+            },
+        };
 
-        ImagePicker.launchCamera(options, (response)  => {
+        ImagePicker.launchCamera(options, () => {
             // Same code as in above section!
             this.props.navigator.push({
                 screen: 'hermorn.screen.ThankYou',
@@ -39,24 +37,24 @@ export class MapView extends React.PureComponent { // eslint-disable-line react/
     render() {
         // const { latitude, longitude } = this.props.data;
         return (
-            <Container>
-                <Content>
-                    <View style={{ height: getYdp(70) }}>
-                        <WebView
-                            source={{ uri: 'https://www.google.com/maps/?q=1.427524,103.633493' }}
-                            // source={{ uri: `https://www.google.com/maps/?q=${latitude},${longitude}` }}
-                        />
-                    </View>
-                    <TouchableOpacity onPress={() => this.openCamera()}>
+            <View style={{ height: getYdp(90) }}>
+                <View style={{ height: getYdp(110) }}>
+                    <WebView
+                        source={{ uri: 'https://www.google.com/maps/?q=1.427524,103.633493' }}
+                        // source={{ uri: `https://www.google.com/maps/?q=${latitude},${longitude}` }}
+                    />
+                </View>
+                <TouchableOpacity onPress={() => this.openCamera()}>
+                    <View style={{ backgroundColor: 'rgba(0,0,0,0.5)', alignSelf: 'center', borderRadius: 50, position: 'absolute', bottom: 0, marginBottom: getYdp(30), padding: 20 }} >
                         <Thumbnail
-                            style={{ padding: 50, width: 50, height: 50, alignSelf: 'center' }}
+                            style={{ width: 46, height: 46 }}
                             square={true}
-                            source={{ uri: 'https://cdn2.iconfinder.com/data/icons/transparent-round-icons/512/camera.png' }}
+                            source={{ uri: 'https://png.icons8.com/metro/52/ffffff/screenshot.png' }}
                             resizeMode="contain"
                         />
-                    </TouchableOpacity>
-                </Content>
-            </Container>
+                    </View>
+                </TouchableOpacity>
+            </View>
         );
     }
 }

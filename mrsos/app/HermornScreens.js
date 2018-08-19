@@ -43,7 +43,7 @@ export const HermoTabConfig = {
             icon: require('hermo/Resources/ic-alarm.png'),
             selectedIcon: require('hermo/Resources/ic-alarm.png'),
             navigatorStyle: {
-                navBarHidden: false,
+                navBarHidden: true,
                 navBarBackgroundColor: 'white',
                 navBarTextColor: hermoStyle.Color,
                 navBarButtonColor: hermoStyle.Color,
@@ -58,7 +58,7 @@ export const HermoTabConfig = {
             icon: require('hermo/Resources/ic-helper.png'),
             selectedIcon: require('hermo/Resources/ic-helper.png'),
             navigatorStyle: {
-                navBarHidden: false,
+                navBarHidden: true,
                 navBarBackgroundColor: 'white',
                 navBarTextColor: hermoStyle.Color,
                 navBarButtonColor: hermoStyle.Color,
@@ -68,6 +68,7 @@ export const HermoTabConfig = {
         },
         {
             label: 'MAP',
+            title: 'Incident Spot',
             screen: 'hermorn.screen.MapView',
             icon: require('hermo/Resources/ic-map.png'),
             selectedIcon: require('hermo/Resources/ic-map.png'),

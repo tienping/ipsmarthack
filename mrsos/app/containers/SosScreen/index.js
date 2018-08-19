@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import { Container, Content, Text, Button, View } from 'native-base';
+import { Container, Text, Thumbnail, View } from 'native-base';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -47,17 +47,29 @@ export class SosScreen extends React.PureComponent { // eslint-disable-line reac
     render() {
         return (
             <Container style={{ backgroundColor: '#49525d' }}>
-                <View style={{height: 50, width: 500}}>
-                    <SlideButton
-                        onSlideSuccess={() => {
-                            this.callOneSignalAPI();
+                <SlideButton
+                    onSlideSuccess={() => {
+                        this.callOneSignalAPI();
+                    }}
+                >
+                    <View
+                        style={{
+                            margin: getXdp(5),
+                            borderRadius: 10,
+                            marginTop: getYdp(40),
+                            height: 70,
+                            width: getXdp(90),
+                            padding: getXdp(5),
+                            backgroundColor: 'red',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
                         }}
                     >
-                        <View style={{ margin: getXdp(5), borderRadius: 10, marginTop: getYdp(35), height: 70, width: getXdp(90), padding: getXdp(5), backgroundColor: 'red' }}>
-                            <Text style={{ color: 'white', fontSize: 24, textAlign: 'center' }}>Swipe to SOS</Text>
-                        </View>
-                    </SlideButton>
-                </View>
+                        <Text style={{ textAlignVertical: 'center', color: 'white', fontSize: 24, fontWeight: '700', textAlign: 'center' }}>Swipe to SOS</Text>
+                        <Thumbnail style={{ marginLeft: 13, alignSelf: 'center', height: 30, width: 30 }} source={{ url: 'https://png.icons8.com/ios/64/ffffff/double-right-filled.png' }}></Thumbnail>
+                        <Thumbnail style={{ marginLeft: -13, alignSelf: 'center', height: 30, width: 30 }} source={{ url: 'https://png.icons8.com/ios/64/ffffff/double-right-filled.png' }}></Thumbnail>
+                    </View>
+                </SlideButton>
             </Container>
         );
     }
