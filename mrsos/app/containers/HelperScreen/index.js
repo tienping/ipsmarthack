@@ -50,7 +50,7 @@ export class HelperScreen extends React.PureComponent { // eslint-disable-line r
                                     OneSignal.addEventListener('received', this.onReceived);
                                     OneSignal.addEventListener('opened', this.onOpened);
                                     OneSignal.addEventListener('ids', this.onIds);
-                                } else if (newValue) {
+                                } else {
                                     OneSignal.removeEventListener('received', () => this.onReceived());
                                     OneSignal.removeEventListener('opened', () => this.onOpened());
                                     OneSignal.removeEventListener('ids', () => this.onId());

@@ -34,7 +34,7 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
         readSchema('hero').then((result) => {
             if (result && result[0]) {
                 globalScope.beHero = result[0].beHero;
-                if (globalScope.behero) {
+                if (globalScope.beHero) {
                     OneSignal.addEventListener('received', this.onReceived);
                     OneSignal.addEventListener('opened', this.onOpened);
                     OneSignal.addEventListener('ids', this.onIds);
