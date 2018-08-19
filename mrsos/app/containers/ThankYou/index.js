@@ -17,11 +17,13 @@ export class ThankYou extends React.PureComponent { // eslint-disable-line react
             <Container>
                 <Content>
                     <Thumbnail
-                        style={{ padding: 50, width: 50, height: 50, alignSelf: 'center' }}
+                        style={{ padding: 50, width: 200, height: 400, alignSelf: 'center' }}
                         square={true}
                         source={require('hermo/Resources/super.gif')}
                         resizeMode="contain"
                     />
+                    <Text style={{ fontSize: 30, fontWeight: '600', justifyContent: 'center', textAlign: 'center' }}>Thank You!</Text>
+                    <Text style={{ fontSize: 30, fontWeight: '600', justifyContent: 'center', textAlign: 'center' }}>You saved the day!</Text>
                 </Content>
             </Container>
         );

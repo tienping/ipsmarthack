@@ -40,20 +40,22 @@ export class MapView extends React.PureComponent { // eslint-disable-line react/
         // const { latitude, longitude } = this.props.data;
         return (
             <Container>
-                <View style={{ height: getYdp(70) }}>
-                    <WebView
-                        source={{ uri: 'https://www.google.com/maps/?q=1.427524,103.633493' }}
-                        // source={{ uri: `https://www.google.com/maps/?q=${latitude},${longitude}` }}
-                    />
-                </View>
-                <TouchableOpacity onPress={() => this.openCamera()}>
-                    <Thumbnail
-                        style={{ padding: 50, width: 50, height: 50, alignSelf: 'center' }}
-                        square={true}
-                        source={{ uri: 'https://cdn2.iconfinder.com/data/icons/transparent-round-icons/512/camera.png' }}
-                        resizeMode="contain"
-                    />
-                </TouchableOpacity>
+                <Content>
+                    <View style={{ height: getYdp(70) }}>
+                        <WebView
+                            source={{ uri: 'https://www.google.com/maps/?q=1.427524,103.633493' }}
+                            // source={{ uri: `https://www.google.com/maps/?q=${latitude},${longitude}` }}
+                        />
+                    </View>
+                    <TouchableOpacity onPress={() => this.openCamera()}>
+                        <Thumbnail
+                            style={{ padding: 50, width: 50, height: 50, alignSelf: 'center' }}
+                            square={true}
+                            source={{ uri: 'https://cdn2.iconfinder.com/data/icons/transparent-round-icons/512/camera.png' }}
+                            resizeMode="contain"
+                        />
+                    </TouchableOpacity>
+                </Content>
             </Container>
         );
     }

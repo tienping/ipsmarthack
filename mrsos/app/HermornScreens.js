@@ -81,6 +81,20 @@ export const HermoTabConfig = {
             passProps: {},
         },
         {
+            label: 'Thank You',
+            screen: 'hermorn.screen.ThankYou',
+            icon: require('hermo/Resources/thankyou.png'),
+            selectedIcon: require('hermo/Resources/thankyou.png'),
+            navigatorStyle: {
+                navBarHidden: false,
+                navBarBackgroundColor: 'white',
+                navBarTextColor: hermoStyle.Color,
+                navBarButtonColor: hermoStyle.Color,
+                navBarNoBorder: false,
+            },
+            passProps: {},
+        },
+        {
             label: 'Profile',
             // title: 'PROFILE',
             screen: 'hermorn.screen.Profile',
