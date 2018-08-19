@@ -21,13 +21,32 @@ import reducer from './reducer';
 import saga from './saga';
 
 export class SosScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+    constructor(props) {
+        super(props);
+        this.state = {
+            latitude: null,
+            longitude: null,
+            error:null,
+        };
 
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                this.setState({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    error: null,
+                });
+            },
+            (error) => this.setState({ error: error.message }),
+            { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+        );
+    }
     callOneSignalAPI = () => {
-        this.props.dispatch(pushOneSignal());
+        this.props.dispatch(pushOneSignal(this.state.latitude, this.state.longitude));
     }
     render() {
         return (
-            <Container>
+            <Container style={{ backgroundColor: '#49525d' }}>
                 <View style={{height: 50, width: 500}}>
                     <SlideButton
                         onSlideSuccess={() => {

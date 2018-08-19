@@ -24,6 +24,7 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { deleteSchema } from 'utils/realmStorage';
 
+import Divider from 'components/Divider';
 import { ImageHolder } from 'components/ImageLink/index';
 import LoadingScreen from 'components/LoadingScreen/index';
 import { HermoText } from 'style/HerComponent';
@@ -438,7 +439,25 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
             <View style={{ flex: 1 }}>
                 {
                     loading === false ?
-                        this.getContent()
+                        // this.getContent()
+                        <View style={{ backgroundColor: 'white'}}>
+                            <View style={{ alignSelf: 'center' }}>
+                                <ImageHolder imageStyle={{ marginTop: 10, borderRadius: 25, height: 50, width: 50, alignSelf: 'center' }} imageSource="https://png.icons8.com/ios/55/000000/user-male-circle.png"/>
+                                <HermoText fontType="Title">Welcome TP</HermoText>
+                            </View>
+                            <View style={{ padding: 30 }}>
+                                <HermoText>Emergency Contact</HermoText>
+                                <HermoText>Recommed to put your family & friend</HermoText>
+                                <HermoText>Father - 011 77890985</HermoText>
+                                <HermoText>Tan - 011 55670987</HermoText>
+                                <HermoText>Alex - 011 78952462</HermoText>
+                                <Divider />
+                                <View style={{ backgroundColor: 'gray', alignSelf: 'flex-end', margin: 10 }}>
+                                    <HermoText style={{ padding: 10 }}>Add</HermoText>
+                                </View>
+                            </View>
+
+                        </View>
                         :
                         <LoadingScreen visible={true} />
                 }

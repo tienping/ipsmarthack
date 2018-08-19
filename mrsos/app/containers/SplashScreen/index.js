@@ -7,7 +7,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { View, NetInfo } from 'react-native';
+import { View, NetInfo, Text, Image, TouchableOpacity } from 'react-native';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import { Navigation } from 'react-native-navigation';
@@ -15,6 +15,7 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import { readSchema } from 'utils/realmStorage';
 
+import { HerToast, getYdp } from 'utils/hermoUtils';
 import { goToLanding } from 'hermo/HermornScreens';
 import { globalScope } from 'hermo/globalScope';
 import { ImageHolder } from 'components/ImageLink/index';
@@ -49,8 +50,7 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
     }
 
     componentWillReceiveProps(nextProps) {
-        goToLanding(this.props.navigator, this);
-
+        // goToLanding(this.props.navigator, this);
         // Navigation.startSingleScreenApp({
         //     screen: {
         //         screen: 'hermorn.screen.SignUp',
@@ -64,20 +64,43 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
     }
 
     componentWillUnmount() {
-        OneSignal.removeEventListener('received', this.onReceived);
-        OneSignal.removeEventListener('opened', this.onOpened);
-        OneSignal.removeEventListener('ids', this.onIds);
+        OneSignal.removeEventListener('received', () => this.onReceived());
+        OneSignal.removeEventListener('opened', () => this.onOpened());
+        OneSignal.removeEventListener('ids', () => this.onId());
     }
 
     onReceived(notification) {
-        alert(`Received: ${notification}`);
+        // alert(`Received: ${notification}`);
+        if (notification.isAppInFocus) {
+            HerToast.show({
+                text: notification.payload.body,
+                type: 'success',
+                duration: 'long',
+                navigator: this.props.navigator,
+            });
+        } else {
+            HerToast.show({
+                text: JSON.stringify(notification.payload.additionalData),
+                type: 'success',
+                duration: 'long',
+                navigator: this.props.navigator,
+            });
+        }
     }
 
-    onOpened(openResult) {
-        console.log('Message: ', openResult.notification.payload.body);
-        console.log('Data: ', openResult.notification.payload.additionalData);
-        console.log('isActive: ', openResult.notification.isAppInFocus);
-        console.log('openResult: ', openResult);
+    onOpened = ({ notification }) => {
+        if (notification.isAppInFocus) {
+            HerToast.show({
+                text: notification.payload.body,
+                type: 'success',
+                duration: 'long',
+                navigator: this.props.navigator,
+            });
+        } else {
+            this.props.navigator.switchToTab({
+                tabIndex: 2,
+            });
+        }
     }
 
     onIds(device) {
@@ -90,9 +113,11 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
 
     render() {
         return (
-            <View style={{ backgroundColor: colorPalette.TyrianPurple }} >
-                {/* <ImageHolder imageStyle={{ alignItems: 'center', justifyContent: 'center' }} imageSource="https://cdn3.hermo.my/hermo/imagelink/2016/nyx-footer-banner_11496890086.png" /> */}
-            </View>
+            <TouchableOpacity onPress={() => goToLanding(this.props.navigator)}>
+                <View style={{ justifyContent: 'center', backgroundColor: colorPalette.White, height: getYdp(100) }} >
+                    <Image style={{ alignSelf: 'center', alignItems: 'center', width: 300, height: 300 }} source={require('hermo/Resources/mrsos_launcher.jpg')} />
+                </View>
+            </TouchableOpacity>
         );
     }
 }

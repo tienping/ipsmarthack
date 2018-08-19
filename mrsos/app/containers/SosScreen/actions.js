@@ -8,8 +8,12 @@ import {
     CallAPI,
 } from './constants';
 
-export function pushOneSignal() {
+export function pushOneSignal(la, long) {
     return {
         type: CallAPI,
+        payload: {
+            la,
+            long,
+        },
     };
 }

@@ -11,6 +11,7 @@ import SosScreen from 'containers/SosScreen';
 // Home Screen
 import HomeScreen from 'containers/HomeScreen';
 import HelperScreen from 'containers/HelperScreen';
+import MapView from 'containers/MapView';
 
 // Profile Screen
 import UserProfileScreen from 'containers/UserProfileScreen';
@@ -26,6 +27,7 @@ export function registerScreens(store, Provider) {
     Navigation.registerComponent('hermorn.screen.Home', () => HomeScreen, store, Provider);
     Navigation.registerComponent('hermorn.screen.Helper', () => HelperScreen, store, Provider);
     Navigation.registerComponent('hermorn.screen.SosScreen', () => SosScreen, store, Provider);
+    Navigation.registerComponent('hermorn.screen.MapView', () => MapView, store, Provider);
 
     // Profile Screen
     Navigation.registerComponent('hermorn.screen.Profile', () => UserProfileScreen, store, Provider);
@@ -53,6 +55,20 @@ export const HermoTabConfig = {
             screen: 'hermorn.screen.Helper',
             icon: require('hermo/Resources/ic-helper.png'),
             selectedIcon: require('hermo/Resources/ic-helper.png'),
+            navigatorStyle: {
+                navBarHidden: false,
+                navBarBackgroundColor: 'white',
+                navBarTextColor: hermoStyle.Color,
+                navBarButtonColor: hermoStyle.Color,
+                navBarNoBorder: false,
+            },
+            passProps: {},
+        },
+        {
+            label: 'MAP',
+            screen: 'hermorn.screen.MapView',
+            icon: require('hermo/Resources/ic-map.png'),
+            selectedIcon: require('hermo/Resources/ic-map.png'),
             navigatorStyle: {
                 navBarHidden: false,
                 navBarBackgroundColor: 'white',
