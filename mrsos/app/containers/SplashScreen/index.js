@@ -64,9 +64,11 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
     }
 
     componentWillUnmount() {
-        OneSignal.removeEventListener('received', () => this.onReceived());
-        OneSignal.removeEventListener('opened', () => this.onOpened());
-        OneSignal.removeEventListener('ids', () => this.onId());
+        if (globalScope.behero) {
+            OneSignal.removeEventListener('received', () => this.onReceived());
+            OneSignal.removeEventListener('opened', () => this.onOpened());
+            OneSignal.removeEventListener('ids', () => this.onId());
+        }
     }
 
     onReceived(notification) {

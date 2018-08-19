@@ -12,13 +12,7 @@ export function* callOneSignal(action) {
         'contents': { 'en': `Victim Location -> latitude: ${la}, longitude: ${long} ` },
         'android_sound': 'alarm',
     });
-    const response = yield call(apiRequest, null, 'post', body, 'https://onesignal.com/api/v1/notifications');
-
-    if (response && response.ok) {
-        alert(JSON.stringify(response));
-    } else {
-        alert('failed');
-    }
+    yield call(apiRequest, null, 'post', body, 'https://onesignal.com/api/v1/notifications');
 }
 // Individual exports for testing
 export default function* defaultSaga() {

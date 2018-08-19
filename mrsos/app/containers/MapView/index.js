@@ -27,6 +27,12 @@ export class MapView extends React.PureComponent { // eslint-disable-line react/
 
         ImagePicker.launchCamera(options, (response)  => {
             // Same code as in above section!
+            this.props.navigator.push({
+                screen: 'hermorn.screen.ThankYou',
+                backButtonTitle: '',
+                animated: true,
+                title: 'Thank You',
+            });
         });
     }
 

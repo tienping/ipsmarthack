@@ -12,6 +12,7 @@ import SosScreen from 'containers/SosScreen';
 import HomeScreen from 'containers/HomeScreen';
 import HelperScreen from 'containers/HelperScreen';
 import MapView from 'containers/MapView';
+import ThankYou from 'containers/ThankYou';
 
 // Profile Screen
 import UserProfileScreen from 'containers/UserProfileScreen';
@@ -28,6 +29,7 @@ export function registerScreens(store, Provider) {
     Navigation.registerComponent('hermorn.screen.Helper', () => HelperScreen, store, Provider);
     Navigation.registerComponent('hermorn.screen.SosScreen', () => SosScreen, store, Provider);
     Navigation.registerComponent('hermorn.screen.MapView', () => MapView, store, Provider);
+    Navigation.registerComponent('hermorn.screen.ThankYou', () => ThankYou, store, Provider);
 
     // Profile Screen
     Navigation.registerComponent('hermorn.screen.Profile', () => UserProfileScreen, store, Provider);
