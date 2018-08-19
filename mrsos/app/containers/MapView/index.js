@@ -38,22 +38,24 @@ export class MapView extends React.PureComponent { // eslint-disable-line react/
         // const { latitude, longitude } = this.props.data;
         return (
             <View style={{ height: getYdp(90) }}>
-                <View style={{ height: getYdp(110) }}>
+                <View style={{ height: getYdp(105) }}>
                     <WebView
                         source={{ uri: 'https://www.google.com/maps/?q=1.427524,103.633493' }}
                         // source={{ uri: `https://www.google.com/maps/?q=${latitude},${longitude}` }}
                     />
                 </View>
-                <TouchableOpacity onPress={() => this.openCamera()}>
-                    <View style={{ backgroundColor: 'rgba(0,0,0,0.5)', alignSelf: 'center', borderRadius: 50, position: 'absolute', bottom: 0, marginBottom: getYdp(30), padding: 20 }} >
-                        <Thumbnail
-                            style={{ width: 46, height: 46 }}
-                            square={true}
-                            source={{ uri: 'https://png.icons8.com/metro/52/ffffff/screenshot.png' }}
-                            resizeMode="contain"
-                        />
-                    </View>
-                </TouchableOpacity>
+                <View style={{ alignSelf: 'center', position: 'absolute', top: 0, marginTop: getYdp(60) }}>
+                    <TouchableOpacity onPress={() => this.openCamera()}>
+                        <View style={{ backgroundColor: 'rgba(0,0,0,0.5)', alignSelf: 'center', borderRadius: 50, padding: 20 }} >
+                            <Thumbnail
+                                style={{ width: 46, height: 46 }}
+                                square={true}
+                                source={{ uri: 'https://png.icons8.com/metro/52/ffffff/screenshot.png' }}
+                                resizeMode="contain"
+                            />
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
         );
     }
