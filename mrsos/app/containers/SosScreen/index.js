@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { Container, Text, Thumbnail, View } from 'native-base';
+import { Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -70,6 +71,9 @@ export class SosScreen extends React.PureComponent { // eslint-disable-line reac
                         <Thumbnail style={{ marginLeft: -13, alignSelf: 'center', height: 30, width: 30 }} source={{ url: 'https://png.icons8.com/ios/64/ffffff/double-right-filled.png' }}></Thumbnail>
                     </View>
                 </SlideButton>
+                <View style={{ backgroundColor: 'black', position: 'absolute', bottom: 0 }}>
+                    <Image style={{ height: getXdp(40) }} resizeMode="contain" source={require('../../Resources/voice-recog.gif')} />
+                </View>
             </Container>
         );
     }
