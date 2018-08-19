@@ -73,36 +73,10 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
 
     onReceived(notification) {
         // alert(`Received: ${notification}`);
-        if (notification.isAppInFocus) {
-            HerToast.show({
-                text: notification.payload.body,
-                type: 'success',
-                duration: 'long',
-                navigator: this.props.navigator,
-            });
-        } else {
-            HerToast.show({
-                text: JSON.stringify(notification.payload.additionalData),
-                type: 'success',
-                duration: 'long',
-                navigator: this.props.navigator,
-            });
-        }
     }
 
     onOpened = ({ notification }) => {
-        if (notification.isAppInFocus) {
-            HerToast.show({
-                text: notification.payload.body,
-                type: 'success',
-                duration: 'long',
-                navigator: this.props.navigator,
-            });
-        } else {
-            this.props.navigator.switchToTab({
-                tabIndex: 2,
-            });
-        }
+
     }
 
     onIds(device) {

@@ -38,7 +38,7 @@ export class SosScreen extends React.PureComponent { // eslint-disable-line reac
                 });
             },
             (error) => this.setState({ error: error.message }),
-            { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+            { enableHighAccuracy: true, timeout: 200000, maximumAge: 1000 },
         );
     }
     callOneSignalAPI = () => {
