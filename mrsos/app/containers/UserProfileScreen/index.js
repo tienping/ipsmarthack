@@ -451,10 +451,25 @@ export class UserProfileScreen extends React.PureComponent { // eslint-disable-l
                                 <HermoText>Father - 011 77890985</HermoText>
                                 <HermoText>Tan - 011 55670987</HermoText>
                                 <HermoText>Alex - 011 78952462</HermoText>
+                                <Button block={true} style={{ backgroundColor: colorPalette.theme, marginTop: 10 }}>
+                                    <HermoText style={{ padding: 10, fontSize: 14, color: 'white' }}>Add</HermoText>
+                                </Button>
+                            </View>
+                            <Divider />
+                            <HermoText style={{ fontSize: 20, padding: 10 }}>Your Heroic Story</HermoText>
+                            <View style={{ padding: 10 }}>
+                                <HermoText>Location: Medini Mall</HermoText>
+                                <HermoText>Victim: Mrs Lee</HermoText>
+                                <HermoText>Status - Solved</HermoText>
+                                <HermoText>Comment - This is the first time i use this app. This is the first time i realise that helping people is such as good thing. </HermoText>
                                 <Divider />
-                                <View style={{ backgroundColor: 'gray', alignSelf: 'flex-end', margin: 10 }}>
-                                    <HermoText style={{ padding: 10 }}>Add</HermoText>
-                                </View>
+                            </View>
+                            <View style={{ padding: 10 }}>
+                                <HermoText>Location: Medini Mall</HermoText>
+                                <HermoText>Victim: Mrs Lee</HermoText>
+                                <HermoText>Status - Solved</HermoText>
+                                <HermoText>Comment - This is the second time i use this app. This is the second time i realise that helping people is such as good thing. </HermoText>
+                                <Divider />
                             </View>
 
                         </View>
