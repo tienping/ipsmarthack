@@ -14,6 +14,7 @@ import { compose } from 'redux';
 import colorPalette from 'style/colorPalette';
 import { getXdp } from 'utils/hermoUtils';
 import { readSchema, writeSchema, deleteSchema } from 'utils/realmStorage';
+import OneSignal from 'react-native-onesignal';
 
 import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
@@ -21,25 +22,11 @@ import { globalScope } from 'hermo/globalScope';
 import makeSelectHelperScreen from './selectors';
 import reducer from './reducer';
 import saga from './saga';
-import messages from './messages';
 
 export class HelperScreen extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
     state = {
-        initialized: false,
-        beHero: false,
+        beHero: globalScope.beHero,
     };
-
-    componentDidMount() {
-        if (!this.state.initialized) {
-            readSchema('hero').then((result) => {
-                if (result && result[0]) {
-                    globalScope.beHero = result[0].beHero;
-                    this.setState({ beHero: result[0].beHero });
-                }
-            });
-            this.state.initialized = true;
-        }
-    }
 
     render() {
         return (
@@ -58,6 +45,16 @@ export class HelperScreen extends React.PureComponent { // eslint-disable-line r
                                 this.setState({ beHero: newValue });
                                 deleteSchema('hero');
                                 writeSchema('hero', { beHero: newValue });
+
+                                if (newValue) {
+                                    OneSignal.addEventListener('received', this.onReceived);
+                                    OneSignal.addEventListener('opened', this.onOpened);
+                                    OneSignal.addEventListener('ids', this.onIds);
+                                } else if (newValue) {
+                                    OneSignal.removeEventListener('received', () => this.onReceived());
+                                    OneSignal.removeEventListener('opened', () => this.onOpened());
+                                    OneSignal.removeEventListener('ids', () => this.onId());
+                                }
                             }}
                         />
                     </View>

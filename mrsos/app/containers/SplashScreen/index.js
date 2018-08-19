@@ -31,9 +31,16 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
     componentWillMount() {
         OneSignal.init('5391a370-3b55-4668-95ed-e44b42cc4bc2');
 
-        OneSignal.addEventListener('received', this.onReceived);
-        OneSignal.addEventListener('opened', this.onOpened);
-        OneSignal.addEventListener('ids', this.onIds);
+        readSchema('hero').then((result) => {
+            if (result && result[0]) {
+                globalScope.beHero = result[0].beHero;
+                if (globalScope.behero) {
+                    OneSignal.addEventListener('received', this.onReceived);
+                    OneSignal.addEventListener('opened', this.onOpened);
+                    OneSignal.addEventListener('ids', this.onIds);
+                }
+            }
+        });
     }
 
     componentDidMount() {
@@ -61,14 +68,6 @@ export class SplashScreen extends React.PureComponent { // eslint-disable-line r
         //         },
         //     },
         // });
-    }
-
-    componentWillUnmount() {
-        if (globalScope.behero) {
-            OneSignal.removeEventListener('received', () => this.onReceived());
-            OneSignal.removeEventListener('opened', () => this.onOpened());
-            OneSignal.removeEventListener('ids', () => this.onId());
-        }
     }
 
     onReceived(notification) {
